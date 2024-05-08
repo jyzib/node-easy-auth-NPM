@@ -4,25 +4,20 @@ This npm package provides functionalities for user registration, OTP verificatio
 
 ## Installation
 
-To use `easy-auth`, make sure to install the following peer dependencies in your project:
+We have taken care of installing the following peer dependencies. Just install `node-easy-auth` and you are good to go.
+```bash
+npm install node-easy-auth
+```
 
 - `cookie-parser`
-- `dotenv`
 - `express`
 - `jsonwebtoken`
 - `mongoose`
 - `nodemailer`
 
-You can install them using:
 
-```bash
-npm install cookie-parser dotenv express jsonwebtoken mongoose nodemailer 
-```
-After installing the peer dependencies, you can then install and use easy-auth in your project.
-```bash
-npm install Easy-auth
-```
 ## Import
+
 import this package to make your node auth easy
 
 ```js
@@ -36,7 +31,7 @@ First, import necessary modules and set up your Express server:
 const express = require('express');
 const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
-const { Register, VerifyOtp, Login, TokenVerification, Logout, ResendOtp } = require('easy-auth');
+const { Register, VerifyOtp, Login, TokenVerification, Logout, ResendOtp } = require('node-easy-auth');
 
 const app = express();
 
@@ -59,11 +54,26 @@ app.listen(PORT, () => {
 
 
 ```
+## Registering a New User
+Use the /register endpoint with a POST request to register a new user:
+```js
+app.post('/register', (req, res) => {
+  Register(req, res)
+    .then((user) => {
+      res.json({ message: 'User registered successfully', user });
+    })
+    .catch((err) => {
+      console.error('Registration error:', err);
+      res.status(500).json({ error: 'Registration failed' });
+    });
+});
+```
+
 
 ## Verifying OTP
 Verify OTP (one-time password) for user authentication with a POST request to /verify-otp:
 ```js
-app.get('//verify-otp',(req,res)=>{
+app.post('/verify-otp',(req,res)=>{
   VerifyOtp(req,res).then((e)=>{
       res.json({otp:e})
       }).catch((err)=>{
