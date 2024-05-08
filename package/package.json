@@ -1,5 +1,5 @@
 {
-  "name": "easy-auth9876789",
+  "name": "node-easy-auth",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -8,6 +8,7 @@
   "author": "jazib zaidi",
   "license": "ISC",
   "description": "Easy authentication package for Node.js using Express and MongoDB",
+  "keywords": ["authentication", "express", "mongodb", "node.js"],
   "dependencies": {
     "bcrypt": "^5.1.1",
     "cookie-parser": "^1.4.6",

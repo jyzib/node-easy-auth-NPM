@@ -1,4 +1,4 @@
-# Easy-auth
+# node-easy-auth
 
 This npm package provides functionalities for user registration, OTP verification, user login, token verification, and user logout using Express.js and Mongoose for MongoDB integration.
 
@@ -21,7 +21,7 @@ npm install node-easy-auth
 import this package to make your node auth easy
 
 ```js
-const { Register, VerifyOtp ,Login,TokenVerification,Logout,ResendOtp} = require('easy-auth');
+const { Register, VerifyOtp ,Login,TokenVerification,Logout,ResendOtp} = require('node-easy-auth');
 ```
 ## Usage
 Setting Up Express Server
