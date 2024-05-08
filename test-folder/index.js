@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const cookieParser = require('cookie-parser')
 const app = express()
 
-const {Register,verifyOtp} = require('easy-auth1234599')
+const {Register,verifyOtp} = require('easy-auth1234699')
 
 
 app.use(cookieParser())
@@ -19,9 +19,9 @@ mongoose.connect(dbtoken).then(()=>{
 
 
 
-app.get('/',(req,res)=>{
+app.get('/register',(req,res)=>{
 
-Register(res,req).then((e)=>{
+Register(req,res).then((e)=>{
   console.log(e)
   res.json({msg:'ok'})
 }).catch((err)=>{
@@ -32,7 +32,7 @@ Register(res,req).then((e)=>{
 
 
 app.get('/otp',(req,res)=>{
-  verifyOtp(res,req)
+  verifyOtp(req,res)
   res.json({otp:'otp'})
 })
 

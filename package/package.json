@@ -1,13 +1,14 @@
 {
-  "name": "easy-auth1234599",
+  "name": "easy-auth1234899",
   "version": "1.0.0",
+  
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "jazib zaidi",
   "license": "ISC",
-  "description": "",
+  "description": "A helpful npm package for performing specific tasks.",
   "dependencies": {
     "axios": "^1.6.8",
     "dotenv": "^16.4.5",
