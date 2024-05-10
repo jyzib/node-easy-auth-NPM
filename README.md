@@ -1,4 +1,4 @@
-# Easy-auth
+# node-easy-auth
 
 This npm package provides functionalities for user registration, OTP verification, user login, token verification, and user logout using Express.js and Mongoose for MongoDB integration.
 
@@ -21,7 +21,7 @@ npm install node-easy-auth
 import this package to make your node auth easy
 
 ```js
-const { Register, VerifyOtp ,Login,TokenVerification,Logout,ResendOtp} = require('easy-auth');
+const { Register, VerifyOtp ,Login,TokenVerification,Logout,ResendOtp} = require('node-easy-auth');
 ```
 ## Usage
 Setting Up Express Server
@@ -68,7 +68,15 @@ app.post('/register', (req, res) => {
     });
 });
 ```
+## Send user info like this in body : 
 
+```bash
+{
+  "username":"xyz",
+  "email":"xyz@gmail.com",
+  "password":"xyz@123"
+}
+```
 
 ## Verifying OTP
 Verify OTP (one-time password) for user authentication with a POST request to /verify-otp:
@@ -81,6 +89,14 @@ app.post('/verify-otp',(req,res)=>{
   })
 })
 ```
+## Send User's OTP like this in body :
+
+```bash
+{
+  "otp":"2443",
+}
+```
+
 ## Re-Send OTP
 Verify OTP (one-time password) for user authentication with a POST request to /verify-otp:
 ```js
@@ -113,6 +129,15 @@ app.post('/login', (req, res) => {
 });
 ```
 
+## Send user info like this in body : 
+
+```bash
+{
+  "email":"xyz@gmail.com",
+  "password":"xyz@123"
+}
+```
+
 ## Protected Routes with Token Verification
 Access protected routes by sending a GET request to /protected-route. This route requires token verification using the tokenVerification middleware:
 
@@ -138,5 +163,5 @@ Add these variable in your environment file
 EMAILPASSWORD=your-gmail-sskey
 EMAIL=your-email-from-which-you-want-to-send-mail
 SECRECTKEY=json-web-token-secrect-key
-MONGODBURL =Your-Mongodb-Url
+MONGODBURL =your-mongodb-url
 ```

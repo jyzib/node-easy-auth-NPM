@@ -4,9 +4,9 @@ This npm package provides functionalities for user registration, OTP verificatio
 
 ## Installation
 
-We have taken care of installing the following peer dependencies. Just install `node-easy-auth.js` and you are good to go.
+We have taken care of installing the following peer dependencies. Just install `node-easy-auth` and you are good to go.
 ```bash
-npm install node-easy-auth.js
+npm install node-easy-auth
 ```
 
 - `cookie-parser`
@@ -31,7 +31,7 @@ First, import necessary modules and set up your Express server:
 const express = require('express');
 const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
-const { Register, VerifyOtp, Login, TokenVerification, Logout, ResendOtp } = require('node-easy-auth.js');
+const { Register, VerifyOtp, Login, TokenVerification, Logout, ResendOtp } = require('node-easy-auth');
 
 const app = express();
 

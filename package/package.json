@@ -1,5 +1,5 @@
 {
-  "name": "node-easy-auth.js",
+  "name": "node-easy-auth",
   "version": "1.0.3",
   "main": "index.js",
   "scripts": {
