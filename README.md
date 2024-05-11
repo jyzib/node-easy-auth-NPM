@@ -142,7 +142,7 @@ app.post('/login', (req, res) => {
 Access protected routes by sending a GET request to /protected-route. This route requires token verification using the tokenVerification middleware:
 
 ```js
-app.get('/protected-route', tokenVerification, (req, res) => {
+app.get('/protected-route', TokenVerification, (req, res) => {
   // Access user data from decoded token in req.user
   res.json({ message: 'Protected route accessed successfully', user: req.user });
 });
@@ -162,6 +162,6 @@ Add these variable in your environment file
 ```js
 EMAILPASSWORD=your-gmail-sskey
 EMAIL=your-email-from-which-you-want-to-send-mail
-SECRECTKEY=json-web-token-secrect-key
+secretKey=json-web-token-secrect-key
 MONGODBURL =your-mongodb-url
 ```
