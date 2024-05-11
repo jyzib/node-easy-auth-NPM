@@ -1,23 +1,19 @@
 require('dotenv').config()
 const nodemailer = require('nodemailer')
-const sendAuthmail =async (email,name,otp)=>{
-  
-const transporter = nodemailer.createTransport({
-    service:"gmail",
-    auth:{
-        user:process.env.EMAIL,
-        pass:process.env.EMAILPASSWORD
-    }
+const sendAuthmail = async (email, name, otp) => {
+  const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: process.env.EMAIL,
+      pass: process.env.EMAILPASSWORD,
+    },
+  })
 
-})
-
-
-
-const moreOption = {
-  from: "Easy Auth",
-  to: email,
-  subject: "Email Verification",
-  html: `
+  const moreOption = {
+    from: 'Easy Auth',
+    to: email,
+    subject: 'Email Verification',
+    html: `
     <html>
     <head>
         <style>
@@ -91,18 +87,17 @@ const moreOption = {
         </div>
     </body>
     </html>
-  `
-};
+  `,
+  }
 
-// view engine: ejs
+  // view engine: ejs
 
-
-try {
+  try {
     await transporter.sendMail(moreOption)
-} catch (error) {
+  } catch (error) {
     console.log(error)
-}
-console.log(otp)
+  }
+  console.log(otp)
 }
 
 module.exports = sendAuthmail
