@@ -3,12 +3,18 @@
   "version": "1.0.4",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "format": "prettier --write \"**/*.{js,jsx,json,css,md}\" --ignore-path .gitignore"
   },
   "author": "jazib zaidi",
   "license": "ISC",
   "description": "Easy authentication package for Node.js using Express and MongoDB",
-  "keywords": ["authentication", "express", "mongodb", "node.js"],
+  "keywords": [
+    "authentication",
+    "express",
+    "mongodb",
+    "node.js"
+  ],
   "dependencies": {
     "bcrypt": "^5.1.1",
     "cookie-parser": "^1.4.6",
@@ -21,5 +27,8 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/jyzib/node-easy-auth-NPM"
+  },
+  "devDependencies": {
+    "prettier": "^3.2.5"
   }
 }

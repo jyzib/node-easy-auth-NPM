@@ -1,16 +1,16 @@
-const generateOTP = require("./generateOtp");
-const user = require("./modal/user"); 
-const jwt = require("jsonwebtoken");
-const sendAuthmail = require("./Nodemailer");
+const generateOTP = require('./generateOtp')
+const user = require('./modal/user')
+const jwt = require('jsonwebtoken')
+const sendAuthmail = require('./Nodemailer')
 require('dotenv').config()
 const Register = async (req, res) => {
-  const { username, email, password } = req.body;
+  const { username, email, password } = req.body
 
   try {
     // Check if user with given email already exists
-    const existingUser = await user.findOne({ email });
+    const existingUser = await user.findOne({ email })
     if (existingUser) {
-      return { msg: `Email already exists: ${email}` };
+      return { msg: `Email already exists: ${email}` }
     }
 
     // Create a new user instance
@@ -18,37 +18,33 @@ const Register = async (req, res) => {
       username,
       email,
       password,
-    });
+    })
 
     // Set expiration time for OTP (120 seconds from current timestamp)
-    const expirationTime = Math.floor(Date.now() / 1000) + 120;
-    console.log(newUser);
+    const expirationTime = Math.floor(Date.now() / 1000) + 120
+    console.log(newUser)
     // Generate OTP and create a JWT token with OTP and expiration time
-    const otp = generateOTP();
-    console.log(otp);
+    const otp = generateOTP()
+    console.log(otp)
     const token = jwt.sign(
       { otp, id: newUser._id, exp: expirationTime },
-      process.env.secretKey
-    );
-    const usertoken = jwt.sign(
-      { id: newUser._id},
-      process.env.secretKey
-    );
+      process.env.secretKey,
+    )
+    const usertoken = jwt.sign({ id: newUser._id }, process.env.secretKey)
 
     // Set OTP token as a cookie
-    res.cookie("otp", token);
-    res.cookie("usertoken", usertoken);
+    res.cookie('otp', token)
+    res.cookie('usertoken', usertoken)
     //send otp via mail
-    
+
     sendAuthmail(email, username, otp)
     // Save the new user to the database
-    await newUser.save();
+    await newUser.save()
 
-    return { msg: `User added successfully email sent to ${email}` };
+    return { msg: `User added successfully email sent to ${email}` }
   } catch (error) {
-
-    return { msg: `Some error occurred: ${error}` };
+    return { msg: `Some error occurred: ${error}` }
   }
-};
+}
 
-module.exports = Register;
+module.exports = Register
